@@ -1,0 +1,30 @@
+<form [formGroup]="foodForm">
+    Id: <input type="number" name="" id="" formControlName="id" class="form-control">
+    Name: <input type="text" name="" id="" formControlName="name" class="form-control">
+    Expiry Date: <input type="date" name="" id="" formControlName="expiryDate" class="form-control">
+    Picture: <input type="file" name="" id="" formControlName="picture" class="form-control" (change)="fnChange($event)"><br>
+    <input type="button" value="Add" class="btn btn-success" (click)="fnAdd()">&nbsp;
+    <input type="button" value="Modify" class="btn btn-warning">&nbsp;
+    <input type="button" value="Delete" class="btn btn-danger">&nbsp;
+    
+</form>
+<br>
+{{ foodForm.value | json}}
+<br>
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Expiry Date</th>
+        <th>Picture</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let f of foods">
+            <td>{{f.id}}</td>
+            <td>{{f.name}}</td>
+            <td>{{f.expiryDate}}</td>
+            <!-- <td>{{f.picture}}</td> -->
+            <td><img width="150" src="data:image/png;base64,{{f.picture}}" /></td>
+        </tr>
+    </tbody>
+</table>
